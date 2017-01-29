@@ -18,6 +18,13 @@ jar {
     version =  '0.1.0'
 }
 
+test {
+    reports {
+        junitXml.enabled = true
+        html.enabled = true
+    }
+}
+
 repositories {
     mavenCentral()
 }

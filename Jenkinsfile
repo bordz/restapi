@@ -13,6 +13,7 @@ pipeline {
         always {
             archive "build/**/*"
             junit 'build/test-results/*.xml'
+            junit 'build/reports/tests/*.xml'
         }
         success {
             mail to:"x.coordinate@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
