@@ -1,21 +1,11 @@
 pipeline {
     agent {
-      label 'swarm'
+      docker 'frekele/gradle:3.3-jdk8'
     }
     stages {
         stage("build and test") {
-            agent {
-              docker 'openjdk:8-jdk'
-            }
             steps {
-                sh 'chmod +x ./gradlew && ./gradlew build'
-            }
-        }
-        stage("build and push docker image") {
-            steps {
-                sh 'pwd && ls -l'
-                sh 'cd ./build/docker/ && docker build -t xcoordinate/restapi . '
-                sh 'cd ./build/docker/ && docker push xcoordinate/restapi'
+                sh 'gradlw build'
             }
         }
     }
