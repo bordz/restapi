@@ -1,8 +1,13 @@
 pipeline {
-    agent { label 'docker' }
+    agent {
+      label 'whatever'
+    }
     stages {
         stage("build and test") {
-            agent { docker 'openjdk:8-jdk' }
+            agent {
+              docker 'openjdk:8-jdk'
+              reuseNode true
+            }
             steps {
                 sh 'pwd && ls -l'
                 sh 'chmod +x ./gradlew'
