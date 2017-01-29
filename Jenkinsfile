@@ -1,10 +1,15 @@
 pipeline {
-    agent { label 'docker' }
+    agent { label:'docker' }
     stages {
-        stage("prepare build scripts") {
+        stage("build and test") {
+            agent { docker 'openjdk:8-jdk' }
             steps {
                 sh 'pwd && ls -l'
                 sh 'chmod +x ./gradlew'
+                sh './gradlew build'
+                sh 'ls -l ./build/libs/'
+                sh 'cp ./build/libs/*.jar ./'
+                sh 'pwd && ls -l'
             }
         }
         stage("build and push docker image") {
