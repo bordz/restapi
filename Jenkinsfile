@@ -15,17 +15,5 @@ pipeline {
             junit 'build/test-results/*.xml'
             junit 'build/reports/tests/*.xml'
         }
-        success {
-            mail to:"x.coordinate@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
-        }
-        failure {
-            mail to:"x.coordinate@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
-        }
-        unstable {
-            mail to:"x.coordinate@gmail.com", subject:"UNSTABLE: ${currentBuild.fullDisplayName}", body: "Huh, we're unstable."
-        }
-        changed {
-            mail to:"x.coordinate@gmail.com", subject:"CHANGED: ${currentBuild.fullDisplayName}", body: "Wow, our status changed!"
-        }
     }
 }
