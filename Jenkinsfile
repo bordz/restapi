@@ -1,6 +1,6 @@
 pipeline {
     agent {
-      label 'docker'
+      label 'swarm'
     }
     stages {
         stage("build and test") {
