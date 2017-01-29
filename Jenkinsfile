@@ -1,5 +1,5 @@
 pipeline {
-    agent { label:'docker' }
+    agent { label 'docker' }
     stages {
         stage("build and test") {
             agent { docker 'openjdk:8-jdk' }
