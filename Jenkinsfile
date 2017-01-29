@@ -8,12 +8,7 @@ pipeline {
               docker 'openjdk:8-jdk'
             }
             steps {
-                sh 'pwd && ls -l'
-                sh 'chmod +x ./gradlew'
-                sh './gradlew build'
-                sh 'ls -l ./build/libs/'
-                sh 'cp ./build/libs/*.jar ./'
-                sh 'pwd && ls -l'
+                sh 'chmod +x ./gradlew && ./gradlew build'
             }
         }
         stage("build and push docker image") {
