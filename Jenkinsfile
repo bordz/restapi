@@ -6,7 +6,6 @@ pipeline {
         stage("build and test") {
             agent {
               docker 'openjdk:8-jdk'
-              reuseNode true
             }
             steps {
                 sh 'pwd && ls -l'
